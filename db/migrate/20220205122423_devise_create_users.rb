@@ -6,9 +6,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      
+
       #追加カラム
       t.string :name, null: false
+      t.text :introduction
       t.text :profile_image_id
       t.boolean :is_admin, null: false, default: false
       t.boolean :is_deleted, null: false,default: false

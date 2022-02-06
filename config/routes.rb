@@ -3,4 +3,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'homes#top'
   get 'home/about' => 'homes#about'
+
+  resources :users, only: [:show,:index,:edit,:update] do
+    member do
+      patch 'delete'
+      get 'confirm_delete'
+    end
+    resource :relationships, only: [:create, :destroy]
+  end
 end
