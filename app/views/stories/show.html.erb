@@ -1,0 +1,42 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>User info</h2>
+      <%= render 'users/info', user: @story.user %>
+    </div>
+    
+    <div class='col-md-8 offset-md-1'>
+  		<h2>story</h2>
+  		<table class='table'>
+  		  <tr>
+          
+          <td id="favorite_buttons_<%= @story.id %>">
+              <%= render 'favorites/favorite', story: @story %>
+          </td>
+          
+          <!--<td>-->
+          <!--  <p>コメント数：<#%= @story.comment.count %></p>-->
+          <!--</td>-->
+          <% if @story.user == current_user %>
+            <td><%= link_to 'Edit', edit_story_path(@story), class: "btn btn-success" %></td>
+            <td><%= link_to 'Destroy', story_path(@story), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <% end %>
+          
+        </tr>
+        <!--<#%= render 'stories/tag', stories: @stories %>-->
+      </table>
+      
+      <h4 class="border-bottom"><%= @story.title  %></h4>
+          
+      <div><%= @story.body %><div>
+      
+      <!--<div id="comments_index">-->
+      <!--  <#%= render 'comments/comments', story: @story %>-->
+      <!--</div>-->
+      <!--<div>-->
+      <!--  <#%= render 'comments/form', story: @story, comment: @comment %>-->
+      <!--</div>-->
+
+    </div>
+  </div>
+</div>

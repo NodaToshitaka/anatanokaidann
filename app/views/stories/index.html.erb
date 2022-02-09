@@ -1,0 +1,18 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    
+    <div class='col-md-3'>
+      <h2>User info</h2>
+      <%= render 'users/info', user: current_user %>
+    </div>
+    
+    <div class='col-md-8 offset-md-1'>
+      <h2>Stories</h2>
+      <!--<#%= render 'alines/aline' %>-->
+      <div id="aline_books">
+      <%= render 'index', stories: @stories %>
+      </div>
+    </div>
+    
+  </div>
+</div>
