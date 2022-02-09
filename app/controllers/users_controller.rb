@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @stories = @user.books.order(created_at: :DESC)
+    @stories = @user.stories.order(created_at: :DESC)
   end
 
   def index

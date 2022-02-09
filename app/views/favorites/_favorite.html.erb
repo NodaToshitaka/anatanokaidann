@@ -1,0 +1,13 @@
+<% if story.favorited_by?(current_user) %>
+    <p>
+      <%= link_to story_favorites_path(story), method: :delete, remote: true do %>
+        <i class="fas fa-heart" style="color: red;"><%= story.favorites.count %></i>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to story_favorites_path(story), method: :post, remote: true do %>
+        <i class="fas fa-heart"><%= story.favorites.count %></i>
+      <% end %>
+    </p>
+  <% end %>

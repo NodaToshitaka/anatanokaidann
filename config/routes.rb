@@ -8,7 +8,14 @@ Rails.application.routes.draw do
     member do
       patch 'delete'
       get 'confirm_delete'
+      get :follows, :followers
     end
     resource :relationships, only: [:create, :destroy]
   end
+
+  resources :stories do
+    resource :favorites, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
+  end
+
 end

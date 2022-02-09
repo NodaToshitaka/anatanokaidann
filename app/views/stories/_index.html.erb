@@ -1,0 +1,29 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% stories.each do |story| %>
+      <tr>
+        <td><%= link_to user_path(story.user) do %>
+          <%= attachment_image_tag(story.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+          <% end %>
+        </td>
+        <td><%= link_to story.title, story_path(story)%></td>
+        <td><%= story.body %></td>
+        <td id="favorite_buttons_<%= story.id %>">
+          <%= render 'favorites/favorite', story: story %>
+        </td>
+        <!--<td>-->
+        <!--  <p>コメント数：<#%= story.comments.count %></p>-->
+        <!--</td>-->
+      </tr>
+      <!--<#%= render 'stories/tag', story: story %>-->
+    <% end %>
+  </tbody>
+</table>
