@@ -2,7 +2,7 @@ class Story < ApplicationRecord
   belongs_to :user
 	has_many :favorites, dependent: :destroy
 	has_many :favorited_users, through: :favorites, source: :user
-# 	has_many :post_comments, dependent: :destroy
+	has_many :comments, dependent: :destroy
 	has_many :story_tags, dependent: :destroy
 	has_many :tags, through: :story_tags
 
@@ -14,7 +14,7 @@ end
 #タグ機能関連
 def tags_save(tag_list)
   if self.tags != nil
-    story_tags_records = StoryTag.where(book_id: self.id)
+    story_tags_records = StoryTag.where(story_id: self.id)
     story_tags_records.destroy_all
   end
 
@@ -36,6 +36,16 @@ def self.looks(search, word)
     @story = Story.where("title LIKE?","%#{word}%")
   else
     @story = Story.all
+  end
+end
+
+#ソート機能関連
+def self.sort(selection)
+  case selection
+  when 'new'
+    return all.order(created_at: :DESC)
+  when 'old'
+    return all.order(created_at: :ASC)
   end
 end
 

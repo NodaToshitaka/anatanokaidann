@@ -19,9 +19,9 @@
         <td id="favorite_buttons_<%= story.id %>">
           <%= render 'favorites/favorite', story: story %>
         </td>
-        <!--<td>-->
-        <!--  <p>コメント数：<#%= story.comments.count %></p>-->
-        <!--</td>-->
+        <td>
+          <p>コメント数：<%= story.comments.count %></p>
+        </td>
       </tr>
       <%= render 'stories/tag', story: story %>
     <% end %>

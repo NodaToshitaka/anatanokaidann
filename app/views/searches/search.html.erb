@@ -13,7 +13,7 @@
           <p>"<%= @word %>"に関するUserは見つかりませんでした</p>
         <% end %>
       <% elsif @range == "Story" %>
-        <h1>Books sesrch for "<%= @word %>"</h1>
+        <h1>Stories sesrch for "<%= @word %>"</h1>
         <% if @stories.present? %>
           <%= render 'stories/index', stories: @stories %>
         <% else %>

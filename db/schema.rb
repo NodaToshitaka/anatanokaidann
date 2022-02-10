@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_093434) do
+ActiveRecord::Schema.define(version: 2022_02_10_153156) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "story_id", null: false
+    t.text "body", null: false
+    t.float "rate", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -42,7 +51,7 @@ ActiveRecord::Schema.define(version: 2022_02_10_093434) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "tag"
+    t.string "tag_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,12 +1,11 @@
 class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
-    # @comment = Comment.new
+    @comment = Comment.new
   end
 
   def index
     @stories = Story.all.order(created_at: :DESC)
-    @stories = Tag.find(params[:id]).stories.order(created_at: :DESC)
   end
 
   def new
