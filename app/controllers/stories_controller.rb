@@ -5,8 +5,8 @@ class StoriesController < ApplicationController
   end
 
   def index
-    @story = Story.new
     @stories = Story.all.order(created_at: :DESC)
+    @stories = Tag.find(params[:id]).stories.order(created_at: :DESC)
   end
 
   def new
@@ -16,9 +16,9 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     @story.user_id = current_user.id
-    # tag_list = params[:book][:tag_name].split(",")
+    tag_list = params[:story][:tag_names].split(",")
     if @story.save
-      # @story.tags_save(tag_list)
+      @story.tags_save(tag_list)
       redirect_to story_path(@story), notice: "You have created story successfully."
     else
       @stories = Story.all.order(created_at: :DESC)
@@ -33,7 +33,9 @@ class StoriesController < ApplicationController
 
   def update
     @story = Story.find(params[:id])
+    tag_list = params[:story][:tag_names].split(",")
     if @story.update(story_params)
+      @story.tags_save(tag_list)
       redirect_to story_path(@story), notice: "You have updated story successfully."
     else
       render :edit

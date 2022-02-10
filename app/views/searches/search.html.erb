@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class='col-md-3'>
+      <h2>User info</h2>
+      <%= render 'users/info', user: current_user %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <% if @range == "User" %>
+        <h1>Users sesrch for "<%= @word %>"</h1>
+        <% if @users.present? %>
+          <%= render 'users/index', users: @users %>
+        <% else %>
+          <p>"<%= @word %>"に関するUserは見つかりませんでした</p>
+        <% end %>
+      <% elsif @range == "Story" %>
+        <h1>Books sesrch for "<%= @word %>"</h1>
+        <% if @stories.present? %>
+          <%= render 'stories/index', stories: @stories %>
+        <% else %>
+          <p>"<%= @word %>"に関する投稿は見つかりませんでした</p>
+        <% end %>
+      <% elsif @range == "Tag" %>
+        <% if @tags.present? %>
+          <h1>Stories sesrch for tag"<%= @word %>"</h1>
+          <% @tags.each do |tag| %>
+            <%= render 'stories/index', stories: tag.stories %>
+          <% end %>
+        <% else %>
+          <p>"<%= @word %>"tagに関する投稿は見つかりませんでした</p>
+        <% end %>
+      <% end %>
+    </div>
+  <div>
+</div>
