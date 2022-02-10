@@ -1,0 +1,28 @@
+<%= form_with model:[story, comment], url: story_comments_path(story) do |f| %>
+
+  <div id="comments_error">
+    <%= render 'layouts/errors', obj: f.object %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_area :body,  class: 'form-control', rows: 5 %>
+  </div>
+
+  <div id="rating-form" >
+    <label>評価：</label>
+    <%= f.hidden_field :rate, id: :review_star %>
+  </div>
+
+  <%= f.submit "送信" %>
+<% end %>
+
+<script>
+  $('#rating-form').raty({
+    size: 36,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'comment[rate]',
+    half: true,
+  });
+</script>

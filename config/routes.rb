@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about'
   get 'search' => 'searches#search'
+  get 'sort' => 'sorts#sort'
 
   resources :users, only: [:show,:index,:edit,:update] do
     member do
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :stories do
     resource :favorites, only: [:create, :destroy]
-    resources :post_comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
 
 end

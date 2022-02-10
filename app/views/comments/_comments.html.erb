@@ -1,0 +1,31 @@
+<% if story.comments.present? %>
+    <table class="table">
+      <tbody>
+        <% story.comments.each do |comment| %>
+        <tr>
+          <td>
+            <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+            <%= link_to comment.user.name, user_path(comment.user) %>
+          </td>
+          <td>
+            <%= comment.body %>
+          </td>
+          <% if comment.user == current_user || current_user.is_admin == true%>
+          <td>
+            <%= link_to story_comment_path(comment.story, comment), method: :delete, remote: true do %>
+              <button class="btn btn-sm btn-danger">Destroy</button>
+            <% end %>
+          </td>
+          <% end %>
+        </tr>
+        
+        <tr>
+          <div data-score="<%= comment.rate %>">評価：</div>
+        </tr>
+        
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>コメントはまだありません</p>
+  <% end %>
