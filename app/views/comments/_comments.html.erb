@@ -10,7 +10,7 @@
           <td>
             <%= comment.body %>
           </td>
-          <% if comment.user == current_user || current_user.is_admin == true%>
+          <% if comment.user == current_user || current_user.is_admin == true %>
           <td>
             <%= link_to story_comment_path(comment.story, comment), method: :delete, remote: true do %>
               <button class="btn btn-sm btn-danger">Destroy</button>
@@ -20,8 +20,23 @@
         </tr>
         
         <tr>
-          <div data-score="<%= comment.rate %>">評価：</div>
+          <td>
+            <div id="rating-<%= comment.id %>"></div>
+          </td>
         </tr>
+        
+        <script>
+          $('#rating-<%= comment.id %>').raty({
+           size: 36,
+           starOn: "<%= asset_path('star-on.png') %>",
+           starOff: "<%= asset_path('star-off.png') %>",
+           starHalf: '<%= asset_path('star-half.png') %>',
+           scoreName: 'comment[rate]',
+           half: true,
+           readOnly: true,
+           score: <%= comment.rate %>,
+          });
+        </script>
         
         <% end %>
       </tbody>
@@ -29,3 +44,5 @@
   <% else %>
     <p>コメントはまだありません</p>
   <% end %>
+  
+  
