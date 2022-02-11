@@ -23,6 +23,28 @@
           <p>コメント数：<%= story.comments.count %></p>
         </td>
       </tr>
+      <tr>
+        <td>
+          評価平均：<%= story.avg_rate %>
+        </td>
+        <td>
+          <div id="rating-avg-<%= story.id %>"></div>
+        </td>
+      </tr>
+
+      <script>
+        $('#rating-avg-<%= story.id %>').raty({
+          size: 36,
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'comment[rate]',
+          half: true,
+          readOnly: true,
+          score: <%= story.avg_rate %>,
+        });
+      </script>
+
       <%= render 'stories/tag', story: story %>
     <% end %>
   </tbody>

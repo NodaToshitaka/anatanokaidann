@@ -49,6 +49,14 @@ def self.sort(selection)
   end
 end
 
+def avg_rate
+  unless self.comments.empty?
+    comments.average(:rate).round(1)
+  else
+    0.0
+  end
+end
+
 
 validates :title, presence: true
 validates :body, presence: true

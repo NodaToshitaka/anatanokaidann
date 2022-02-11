@@ -1,0 +1,31 @@
+<%= form_for(@contact, url: confirm_path) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name, 'お名前（必須）' %>
+    <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :email, '返信先メールアドレス（必須）' %>
+    <%= f.email_field :email, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :phone_number, '電話番号（必須）' %>
+    <%= f.text_field :phone_number, class: 'form-control' %>
+  </div>
+  
+  <div>
+    <%= f.label :subject, 'お問い合わせ名' %>
+    <%= f.select :subject, Contact.subjects.keys, {} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :message, 'メッセージ（必須）' %>
+    <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= f.submit '入力内容確認' %>
+  </div>
+<% end %>
