@@ -49,9 +49,18 @@ def self.sort(selection)
   end
 end
 
+#評価平均
 def avg_rate
-  unless self.comments.empty?
+  if self.comments.present?
     comments.average(:rate).round(1)
+  else
+    0.0
+  end
+end
+
+def total_rate
+  if self.comments.present?
+    comments.all.sum(:rate)
   else
     0.0
   end
