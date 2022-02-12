@@ -8,6 +8,10 @@ class StoriesController < ApplicationController
     @stories = Story.all.order(created_at: :DESC)
   end
 
+  def ranking
+    @stories = Story.all.order(total_rate: :DESC)
+  end
+
   def new
     @story = Story.new
   end

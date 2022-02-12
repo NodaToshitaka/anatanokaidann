@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   end
 
   resources :stories do
+    collection do
+      get :ranking
+    end
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
