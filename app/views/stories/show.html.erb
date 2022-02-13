@@ -29,14 +29,15 @@
       <h4 class="border-bottom"><%= @story.title  %></h4>
           
       <div><%= @story.body %><div>
+        
+      <div id="comment_">
+        <%= render 'comments/form', story: @story, comment: @comment %>
+      </div>
       
       <div id="comments_index">
         <%= render 'comments/comments', story: @story %>
       </div>
-      <div>
-        <%= render 'comments/form', story: @story, comment: @comment %>
-      </div>
-
+      
     </div>
   </div>
 </div>
