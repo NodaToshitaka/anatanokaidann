@@ -20,12 +20,12 @@ class StoriesController < ApplicationController
     @story = Story.new(story_params)
     @story.user_id = current_user.id
     tag_list = params[:story][:tag_names].split(",")
+
     if @story.save
       @story.tags_save(tag_list)
       redirect_to story_path(@story), notice: "You have created story successfully."
     else
-      @stories = Story.all.order(created_at: :DESC)
-      render :index
+      render :new
     end
   end
 

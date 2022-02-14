@@ -1,4 +1,4 @@
-<table>
+<table class="table">
   <tbody>
 
     <tr>
@@ -28,7 +28,7 @@
   </tbody>
 </table>
 
-<%= form_for(@contact) do |f| %>
+<%= form_with model: @contact, local: true do |f| %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :email %>
   <%= f.hidden_field :phone_number %>
@@ -37,7 +37,7 @@
   <div><%= f.submit '送信' %></div>
 <% end %>
 
-<%= form_for @contact, url: back_path do |f| %>
+<%= form_with model: @contact, url: back_contacts_path, local: true do |f| %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :email %>
   <%= f.hidden_field :phone_number %>
