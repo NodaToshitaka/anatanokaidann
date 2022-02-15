@@ -1,7 +1,7 @@
 <% if story.comments.present? %>
     <table class="table">
       <tbody>
-        <% comments.each do |comment| %>
+        <% story.comments.each do |comment| %>
         <tr>
           <td>
             <%= attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>

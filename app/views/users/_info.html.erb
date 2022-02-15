@@ -5,13 +5,13 @@
 	  <th>ユーザーネーム</th>
 	  <th><%= user.name %></th>
   </tr>
-</table>
-<div>
-  <div>紹介文:</div>
-  <p class="text-break"><%= simple_format(user.introduction) %></p>
-</div>
-<table class="table" id="favorite_count">
-  <%= render 'favorites/count', user: user %>
+  <tr>
+    <th colspan="2">
+      <div style="max-height: 100px; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5;">
+        <%= simple_format(user.introduction) %>
+      </div>
+    </th>
+  </tr>
 </table>
 <table class='table' id='follow-btn'>
   <%= render 'relationships/follow_btn', user: user %>

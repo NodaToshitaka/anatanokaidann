@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
     @comment = Comment.new
-    @comments = @story.comments.page(params[:page])
+    
   end
 
   def index
@@ -32,7 +32,7 @@ class StoriesController < ApplicationController
 
   def edit
     @story = Story.find(params[:id])
-    redirect_to user_path(current_user) unless current_user == @story.user || current_user.is_admin == true
+    redirect_to user_path(current_user) unless current_user == @story.user || current_user.is_admin?
   end
 
   def update
