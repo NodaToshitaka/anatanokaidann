@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       patch 'delete'
       get 'confirm_delete'
       get :follows, :followers
+      get :favorite_stories
     end
     resource :relationships, only: [:create, :destroy]
   end

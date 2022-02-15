@@ -58,6 +58,7 @@ def avg_rate
   end
 end
 
+#評価合計
 def total_rate
   if self.comments.present?
     comments.all.sum(:rate)

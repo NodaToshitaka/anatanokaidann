@@ -26,16 +26,17 @@
         <%= render 'stories/tag', story: @story %>
       </table>
       
-      <h4 class="border-bottom"><%= @story.title  %></h4>
-          
-      <div><%= @story.body %><div>
+      <div class=" mt-2 mb-2">
+        <h4 class="border-bottom"><%= @story.title  %></h4>
+        <div><%= simple_format(@story.body) %><div>
+      </div>
         
-      <div id="comment_">
+      <div>
         <%= render 'comments/form', story: @story, comment: @comment %>
       </div>
       
       <div id="comments_index">
-        <%= render 'comments/comments', story: @story %>
+        <%= render 'comments/comments', story: @story, comments: @comments %>
       </div>
       
     </div>

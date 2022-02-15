@@ -1,14 +1,19 @@
+<h2>ユーザー情報</h2>
 <table class='table'>
   <tr><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></tr>
   <tr>
-	  <th>name</th>
+	  <th>ユーザーネーム</th>
 	  <th><%= user.name %></th>
   </tr>
-  <tr>
-    <th>introduction</th>
-    <th><%= user.introduction %></th>
-  </tr>
+</table>
+<div>
+  <div>紹介文:</div>
+  <p class="text-break"><%= simple_format(user.introduction) %></p>
+</div>
+<table class="table" id="favorite_count">
+  <%= render 'favorites/count', user: user %>
 </table>
 <table class='table' id='follow-btn'>
   <%= render 'relationships/follow_btn', user: user %>
 </table>
+
