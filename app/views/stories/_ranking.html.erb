@@ -1,35 +1,43 @@
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<table class='table'>
   <tbody>
     <% stories.each.with_index(1) do |story, i| %>
       <tr>
-        <td>第<%= i %>位</td>
-        <td><%= link_to user_path(story.user) do %>
-          <%= attachment_image_tag(story.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %>
+        <td colspan="4"></td>
+      </tr>
+      <tr>
+        <td class="text-success"><h3>第<%= i %>位</h3></td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <h3><%= link_to story.title, story_path(story), class: "text-warning" %></h2>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 20%;">作者：</td>
+        <td>
+          <%= link_to user_path(story.user) do %>
+           <%= story.user.name %>
           <% end %>
         </td>
-        <td><%= link_to story.title, story_path(story)%></td>
-        <td><%= story.body %></td>
-        <td id="favorite_buttons_<%= story.id %>">
+        <td id="favorite_buttons_<%= story.id %>" style="width: 10%;">
           <%= render 'favorites/favorite', story: story %>
         </td>
-        <td>
+        <td style="width: 20%;">
           <p>コメント数：<%= story.comments.count %></p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <div class="text-secondary" style="max-height: 150px; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5;">
+            <%= simple_format(story.body) %>
+          </div>
         </td>
       </tr>
       <tr>
         <td>
           評価合計:
         </td>
-        <td>
+        <td colspan="3">
           <%= story.total_rate %>
         </td>
       </tr>

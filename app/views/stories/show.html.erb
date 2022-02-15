@@ -9,34 +9,38 @@
   		<h2>story</h2>
   		<table class='table'>
   		  <tr>
-          
           <td id="favorite_buttons_<%= @story.id %>">
               <%= render 'favorites/favorite', story: @story %>
           </td>
-          
           <td>
             <p>コメント数：<%= @story.comments.count %></p>
           </td>
-          <% if @story.user == current_user %>
+          <% if @story.user == current_user || current_user.is_admin?  %>
             <td><%= link_to 'Edit', edit_story_path(@story), class: "btn btn-success" %></td>
             <td><%= link_to 'Destroy', story_path(@story), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+          <% else %>
+            <td></td>
+            <td></td>
           <% end %>
-          
         </tr>
         <%= render 'stories/tag', story: @story %>
+        <tr>
+          <td colspan="4"><h4><%= @story.title  %></h4></td>
+        </tr>
+        <tr>
+          <td class="text-break" colspan="4"><div><%= simple_format(@story.body) %><div></td>
+        </tr>
       </table>
       
-      <div class=" mt-2 mb-2">
-        <h4 class="border-bottom"><%= @story.title  %></h4>
-        <div><%= simple_format(@story.body) %><div>
+      <div id="comments_error">
+        <%= render 'layouts/errors', obj: @comment %>
       </div>
-        
       <div>
         <%= render 'comments/form', story: @story, comment: @comment %>
       </div>
       
       <div id="comments_index">
-        <%= render 'comments/comments', story: @story, comments: @comments %>
+        <%= render 'comments/comments', story: @story %>
       </div>
       
     </div>

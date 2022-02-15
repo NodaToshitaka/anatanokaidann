@@ -2,12 +2,11 @@
   <div class='row'>
 
     <div class='col-md-3'>
-      <h2>User info</h2>
       <%= render 'users/info', user: current_user %>
     </div>
 
     <div class='col-md-8 offset-md-1'>
-      <h2>Ranking</h2>
+      <h2>ランキング</h2>
       <div id="ranking_stories">
        <%= render 'stories/ranking', stories: @stories %>
       </div>

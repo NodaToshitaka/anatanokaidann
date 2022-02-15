@@ -24,17 +24,13 @@
         </td>
       </tr>
       <tr>
-        <td>本文：</td>
-        <td colspan="3"></td>
-      </tr>
-      <tr>
         <td colspan="4">
-          <div style="max-height: 100px; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5;">
+          <div class="text-secondary" style="max-height: 150px; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5;">
             <%= simple_format(story.body) %>
           </div>
         </td>
       </tr>
-      <tr class="mb-5">
+      <tr>
         <td>
           評価平均：<%= story.avg_rate %>
         </td>
