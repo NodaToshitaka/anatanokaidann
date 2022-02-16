@@ -24,7 +24,7 @@
 </tr>
 <tr>
   <th colspan="2">
-    <% if user == current_user %>
+    <% if user == current_user || current_user.is_admin? %>
       <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
     <% else %>
       <% if current_user.following?(user) %>

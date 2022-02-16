@@ -17,6 +17,8 @@ class User < ApplicationRecord
   
   attachment :profile_image, destroy: false
   
+  validates :introduction, length: { maximum: 100 }
+  
   #フォロー関連定義
   def follow(user_id)
     follower.create(followed_id: user_id)
