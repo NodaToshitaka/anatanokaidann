@@ -1,12 +1,10 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
-      <h2>User info</h2>
       <%= render 'users/info', user: @story.user %>
     </div>
     
     <div class='col-md-8 offset-md-1'>
-  		<h2>story</h2>
   		<table class='table'>
   		  <tr>
           <td id="favorite_buttons_<%= @story.id %>">

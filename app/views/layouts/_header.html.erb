@@ -1,22 +1,22 @@
 <header>
   <nav class="navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/"><span>logo</span></a>
+    <div class="container d-flex">
+      <a class="navbar-brand" href="/"><%= image_tag 'anatanokaidannlogo.png', height: "150px", class: "d-block mr-auto" %></a>
   
-      <div>
-        <ul class="navbar-nav ml-auto">
+      <div class=" ml-auto my-auto">
+        <ul class="navbar-nav d-inline-block">
         <% if user_signed_in? %>
-          <li><%= link_to 'Home', user_path(current_user), class: 'text-light' %></li>
-          <li><%= link_to 'Users', users_path, class: 'text-light' %></li>
-          <li><%= link_to 'Stories', stories_path, class: 'text-light'%></li>
-          <li><%= link_to 'Ranking', ranking_stories_path, class: 'text-light'%></li>
-          <li><%= link_to 'New Story', new_story_path, class: 'text-light' %></li>
-          <li><%= link_to ' logout', destroy_user_session_path, method: :delete,class: 'text-light' %></li>
+          <li><%= link_to 'マイページ', user_path(current_user), class: 'text-light' %></li>
+          <li><%= link_to 'ユーザー一覧', users_path, class: 'text-light' %></li>
+          <li><%= link_to '投稿一覧', stories_path, class: 'text-light'%></li>
+          <li><%= link_to 'ランキング', ranking_stories_path, class: 'text-light'%></li>
+          <li><%= link_to '新規投稿', new_story_path, class: 'text-light' %></li>
+          <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete,class: 'text-light' %></li>
         <% else %>
-          <li><%= link_to 'Home', root_path, class: 'text-light' %></li>
-          <li><%= link_to 'About', home_about_path, class: 'text-light' %></li>
-          <li><%= link_to 'sign up', new_user_registration_path, class: 'text-light' %></li>
-          <li><%= link_to 'login', new_user_session_path , class: 'text-light'%></li>
+          <li><%= link_to 'ホーム', root_path, class: 'text-light' %></li>
+          <li><%= link_to 'アバウト', home_about_path, class: 'text-light' %></li>
+          <li><%= link_to 'サインイン', new_user_registration_path, class: 'text-light' %></li>
+          <li><%= link_to 'ログイン', new_user_session_path , class: 'text-light'%></li>
         <% end %>
         </ul>
       </div>
