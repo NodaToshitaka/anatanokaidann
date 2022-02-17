@@ -6,14 +6,14 @@
     </div>
     <div class="col-md-8 offset-md-1">
       <% if @range == "User" %>
-        <h1>Users sesrch for "<%= @word %>"</h1>
+        <h1>"<%= @word %>"に関するユーザーの検索結果</h1>
         <% if @users.present? %>
           <%= render 'users/index', users: @users %>
         <% else %>
-          <p>"<%= @word %>"に関するUserは見つかりませんでした</p>
+          <p>"<%= @word %>"に関するユーザーは見つかりませんでした</p>
         <% end %>
       <% elsif @range == "Story" %>
-        <h1>Stories sesrch for "<%= @word %>"</h1>
+        <h1>"<%= @word %>"に関する投稿の検索結果</h1>
         <% if @stories.present? %>
           <%= render 'stories/index', stories: @stories %>
         <% else %>
@@ -21,12 +21,13 @@
         <% end %>
       <% elsif @range == "Tag" %>
         <% if @tags.present? %>
-          <h1>Stories sesrch for tag"<%= @word %>"</h1>
+          <h1>"<%= @word %>"タグに関する投稿の検索結果</h1>
           <% @tags.each do |tag| %>
-            <%= render 'stories/index', stories: tag.stories %>
+          <% @stories = tag.stories.order(created_at: :DESC).page(params[:page]) %>
+            <%= render 'stories/index', stories: @stories %>
           <% end %>
         <% else %>
-          <p>"<%= @word %>"tagに関する投稿は見つかりませんでした</p>
+          <p>"<%= @word %>"タグに関する投稿は見つかりませんでした</p>
         <% end %>
       <% end %>
     </div>
