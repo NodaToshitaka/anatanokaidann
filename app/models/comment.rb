@@ -5,7 +5,7 @@ class Comment < ApplicationRecord
     greater_than_or_equal_to: 1
   }, presence: true
   
-  validates :body, presence: true
+  validates :body, presence: true, length: { maximum: 200 }
 
   belongs_to :user
   belongs_to :story

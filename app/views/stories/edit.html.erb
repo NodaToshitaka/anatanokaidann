@@ -4,7 +4,9 @@
   		<h1>編集画面</h1>
     	<%= render 'layouts/errors', obj: @story %>
   		<%= render 'stories/form', story: @story %>
-  		<%= link_to '戻る', story_path(@story), data: { confirm: '編集したデータは失われます、戻りますか？' }, class: "btn btn-secondary" %> |
-  		<%= link_to '一覧', stories_path, data: { confirm: '編集したデータは失われます、戻りますか？' }, class: "btn btn-secondary" %>
+  		<div class="form-group">
+  		  <%= link_to '戻る', story_path(@story), data: { confirm: '編集したデータは失われます、戻りますか？' }, class: "btn btn-secondary" %> |
+  		  <%= link_to '一覧', stories_path, data: { confirm: '編集したデータは失われます、戻りますか？' }, class: "btn btn-secondary" %>
+  		</div>
   </div>
 </div>
