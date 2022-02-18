@@ -4,7 +4,7 @@
         <% story.comments.order(created_at: :DESC).each do |comment| %>
         <tr>
           <td style="width: 15%;">
-            <%= attachment_image_tag(comment.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
+            <%= attachment_image_tag(comment.user, :profile_image, :fill, 100, 100, fallback: asset_path("no_image.jpg")) %>
           </td>
           <td>
             <%= link_to comment.user.name, user_path(comment.user) %>
