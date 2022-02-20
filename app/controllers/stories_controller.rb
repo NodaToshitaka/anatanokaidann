@@ -10,7 +10,7 @@ class StoriesController < ApplicationController
   end
 
   def ranking
-    @stories = Story.all.order(total_rate: :DESC).page(params[:page])
+    @stories = Story.rank
   end
 
   def new

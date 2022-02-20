@@ -1,9 +1,9 @@
-<div class="bg-secondary" style="height: 50px;">
+<div class="bg-secondary" style="height: 50px">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
 
-        <div class="">
+        <div>
           <%= form_with url: search_path, local: true, method: :get do |f| %>
             <%= f.text_field :word %>
             <%= f.select :range, options_for_select([['User'], ['Story'],['Tag']]) %>

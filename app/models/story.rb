@@ -67,6 +67,20 @@ def total_rate
   end
 end
 
+def self.rank
+  self.left_joins(:comments).
+              distinct.
+              sort_by do |story|
+                hoges = story.comments
+                if hoges.present?
+                  hoges.map(&:rate).sum
+                else
+                  0.0
+                end
+              end.
+              reverse
+end
+
 
 validates :title, presence: true
 validates :body, presence: true
