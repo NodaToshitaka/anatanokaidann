@@ -1,6 +1,6 @@
 <table class='table'>
   <tbody>
-    <% stories.each.with_index(1) do |story, i| %>
+    <% stories.first(10).each.with_index(1) do |story, i| %>
       <tr>
         <td class="bg-secondary" colspan="4"></td>
       </tr>
@@ -46,4 +46,3 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate stories %>
