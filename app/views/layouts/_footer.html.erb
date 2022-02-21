@@ -1,10 +1,12 @@
 <footer>
-  <nav class="navbar-expand-lg navbar-dark bg-dark", style="height: 100px;">
-    <div class="container">
-      <div class="ml-auto my-auto">
+  <nav class="navbar-expand-lg navbar-dark bg-dark">
+    <div class="container  d-flex">
+      <div class="ml-auto" style="padding: 20px 0 20px">
+        <% if user_signed_in? %>
         <ul class="navbar-nav d-inkine-block">
           <li><%= link_to 'お問い合わせ',new_contact_path, class: 'text-light' %></li>
         </ul>
+        <% end %>
       </div>
     </div>
   </nav>
