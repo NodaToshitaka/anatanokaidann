@@ -1,9 +1,9 @@
 
 
-<%= render "devise/shared/links" %>
+
 <div class="container">
   <div class="row">
-    <div class="col-md-8  px-5 px-sm-0 mx-auto">
+    <div class="col-md-8 mx-auto" style="padding: 10px 0 400px;">
       <h3>ログイン</h3>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -16,13 +16,6 @@
         <%= f.label :password, "パスワード" %><br />
         <%= f.password_field :password, autocomplete: "current-password" %>
       </div>
-
-      <% if devise_mapping.rememberable? %>
-        <div class="form-group">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      <% end %>
 
       <div class="form-group">
         <%= f.submit "ログイン", class: "btn btn-success" %>

@@ -1,6 +1,8 @@
 class Tag < ApplicationRecord
   has_many :story_tags, dependent: :destroy
   has_many :stories, through: :story_tags
+  
+  validates :tag_name, uniqueness: true
  
  #検索機能関連
   def self.looks(search,word)
