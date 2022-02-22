@@ -7,7 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+
   </head>
 
   <body>
@@ -15,7 +15,7 @@
     <% if user_signed_in? %>
      <%= render 'layouts/search' %>
     <% end %>
-    <main>
+    <main style="background-color: #f9f9f9;">
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>
