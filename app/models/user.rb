@@ -17,6 +17,7 @@ class User < ApplicationRecord
   
   attachment :profile_image, destroy: false
   
+  validates :name, presence: true
   validates :introduction, length: { maximum: 200 }
   
   #フォロー関連定義
