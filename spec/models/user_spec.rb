@@ -3,16 +3,34 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'ユーザー新規作成' do
     context '正常系' do
-      it 'nameが存在すれば保存できる' do
-        user = User.new(password: "aaa111",email: "aa@aa", name: "aaaa", introduction: nil, profile_image_id: nil, is_admin: false, is_deleted: false, created_at: "2022-02-08 22:10:10", updated_at: "2022-02-08 22:41:19")
+      it 'name,email,paswordが存在すれば保存できる' do
+        user = FactoryBot.build(:user)
         expect(user).to be_valid
       end
     end
     context '異常系' do
-      it 'bodyが存在しなければ保存できない' do
-        user = User.new(password: "aaa111",email: "aa@aa", name: nil, introduction: nil, profile_image_id: nil, is_admin: false, is_deleted: false, created_at: "2022-02-08 22:10:10", updated_at: "2022-02-08 22:41:19")
+      it 'nameが存在しなければ保存できない' do
+        user = FactoryBot.build(:user, name: nil)
         user.valid?
         expect(user.errors.full_messages).to include("Name can't be blank")
+      end
+      
+      it 'emailが存在しなければ保存できない' do
+        user = FactoryBot.build(:user, email: nil)
+        user.valid?
+        expect(user.errors.full_messages).to include("Email can't be blank")
+      end
+      
+      it 'passwordが存在しなければ保存できない' do
+        user = FactoryBot.build(:user, password: nil)
+        user.valid?
+        expect(user.errors.full_messages).to include("Password can't be blank")
+      end
+      
+      it 'introductionが200字いないでなければ保存できない' do
+        user = FactoryBot.build(:user, introduction: Faker::Lorem.characters(number: 201))
+        user.valid?
+        expect(user.errors.full_messages).to include("Introduction is too long (maximum is 200 characters)")
       end
     end
   end

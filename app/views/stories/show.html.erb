@@ -26,6 +26,14 @@
           <td colspan="4"><h4><%= @story.title  %></h4></td>
         </tr>
         <tr>
+          <td>作者：</td>
+          <td colspan="3">
+            <%= link_to user_path(@story.user) do %>
+              <%= @story.user.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
           <td class="text-break" colspan="4"><div><%= simple_format(@story.body) %><div></td>
         </tr>
       </table>

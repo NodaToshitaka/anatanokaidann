@@ -40,5 +40,6 @@ https://docs.google.com/spreadsheets/d/1XZ4l3d1xbjK_mUf652vXNBgYjmR9vzVrbfYgL2kx
 - IDE：Cloud9
 
 ## 使用素材
-- Font Awesome https://fontawesome.com/
+- Font Awesome: https://fontawesome.com/
+- raty/jquery.raty.js at master ・wbotelhos/raty : https://github.com/wbotelhos/raty/blob/master/lib/jquery.raty.js
 
