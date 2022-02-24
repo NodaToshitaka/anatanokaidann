@@ -29,6 +29,10 @@ class ContactsController < ApplicationController
   def done
   end
   
+  def use_before_action?
+    false
+  end
+  
   private
 
   def contact_params
