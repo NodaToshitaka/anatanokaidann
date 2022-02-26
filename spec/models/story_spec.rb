@@ -24,6 +24,13 @@ RSpec.describe Story, type: :model do
         expect(story.errors.full_messages).to include("Title can't be blank")
       end
       
+      it 'titleが同じであれば保存できない' do
+        user = FactoryBot.build(:user)
+        FactoryBot.build(:story, user: user).save
+        story = FactoryBot.build(:story, user: user, body: "testbody2")
+        story.valid?
+        expect(story.errors.full_messages).to include("Title has already been taken")
+      end
     end
   end
 end
