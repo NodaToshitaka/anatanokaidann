@@ -5,6 +5,9 @@ class Story < ApplicationRecord
 	has_many :comments, dependent: :destroy
 	has_many :story_tags, dependent: :destroy
 	has_many :tags, through: :story_tags
+	
+	validates :title, presence: true, uniqueness: true
+  validates :body, presence: true
 
 #いいね機能関連
 def favorited_by?(user)
@@ -82,7 +85,6 @@ def self.rank
 end
 
 
-validates :title, presence: true
-validates :body, presence: true
+
 
 end

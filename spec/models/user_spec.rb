@@ -32,6 +32,14 @@ RSpec.describe User, type: :model do
         user.valid?
         expect(user.errors.full_messages).to include("Introduction is too long (maximum is 200 characters)")
       end
+      
+      it 'nameが同じだと保存できない' do
+        FactoryBot.build(:user).save
+        user = FactoryBot.build(:user, email: "test2@test2", password: "test2" )
+        
+        user.valid?
+        expect(user.errors.full_messages).to include("Name has already been taken")
+      end
     end
   end
 end
