@@ -15,6 +15,11 @@ def favorited_by?(user)
 end
 
 #タグ機能関連
+
+def tag_names
+  tags.pluck(:tag_name).join(',')
+end
+
 def tags_save(tag_list)
   if self.tags != nil
     story_tags_records = StoryTag.where(story_id: self.id)
@@ -71,17 +76,7 @@ def total_rate
 end
 
 def self.rank
-  self.left_joins(:comments).
-              distinct.
-              sort_by do |story|
-                hoges = story.comments
-                if hoges.present?
-                  hoges.map(&:rate).sum
-                else
-                  0.0
-                end
-              end.
-              reverse
+  self.left_joins(:comments).group(:id).order("avg(comments.rate) desc")
 end
 
 

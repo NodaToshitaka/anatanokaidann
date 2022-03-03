@@ -1,17 +1,21 @@
 <table class='table'>
   <tbody>
-    <% stories.first(10).each.with_index(1) do |story, i| %>
+    <% stories.each.with_index(1) do |story, i| %>
+    
       <tr>
         <td class="bg-secondary" colspan="4"></td>
       </tr>
+      
       <tr>
         <td class="text-success"><h3>第<%= i %>位</h3></td>
       </tr>
+      
       <tr>
         <td colspan="4">
           <h3><%= link_to story.title, story_path(story), class: "text-warning" %></h2>
         </td>
       </tr>
+      
       <tr>
         <td style="width: 20%;">作者：</td>
         <td>
@@ -26,6 +30,7 @@
           <p>コメント数：<%= story.comments.count %></p>
         </td>
       </tr>
+      
       <tr>
         <td colspan="4">
           <div class="text-secondary" style="max-height: 150px; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5;">
@@ -33,6 +38,29 @@
           </div>
         </td>
       </tr>
+      
+      <tr>
+        <td>
+          評価平均：<%= story.avg_rate %>
+        </td>
+        <td colspan="3">
+          <div id="rating-avg-<%= story.id %>"></div>
+        </td>
+      </tr>
+      
+      <script>
+        $('#rating-avg-<%= story.id %>').raty({
+          size: 36,
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'comment[rate]',
+          half: true,
+          readOnly: true,
+          score: <%= story.avg_rate %>,
+        });
+      </script>
+      
       <tr>
         <td>
           評価合計:
@@ -46,3 +74,4 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate stories %>
