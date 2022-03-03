@@ -10,7 +10,7 @@ class StoriesController < ApplicationController
   end
 
   def ranking
-    @stories = Story.rank
+    @stories = Story.rank.page(params[:page])
   end
 
   def new
