@@ -3,7 +3,7 @@
     <div class="col-md-10 mx-auto" style="padding: 10px 0 10px">
     <h2>編集画面</h2>
     <%= form_with model:@user, local:true do |f| %>
-      <%= render 'layouts/errors', obj: @user %>
+    <%= render "devise/shared/error_messages", resource: @user %>
       <div class="form-group">
         <%= f.label :name, "ユーザーネーム" %>
         <%= f.text_field :name, class: "form-control" %>
@@ -16,7 +16,7 @@
         <%= f.label :introduction, "紹介文（200字以内）" %>
         <%= f.text_area :introduction, size: '10x20', class: "form-control" %>
       </div>
-      
+
       <% if current_user.is_admin? %>
       <div class="form-group" style="display: flex">
         <div>会員ステータス</div>
@@ -28,13 +28,13 @@
         </div>
       </div>
       <% end %>
-      
+
       <div class="form-group">
         <%= f.submit "送信", class: 'btn btn-success btn-lg btn-block' %>
       </div>
-      
+
     <% end %>
-    
+
     <div class="form-group">
       <%= link_to '戻る', user_path(@user), data: { confirm: '編集したデータは失われます、戻りますか？' }, class: "btn btn-secondary" %> |
   	  <%= link_to '一覧', users_path, data: { confirm: '編集したデータは失われます、戻りますか？' }, class: "btn btn-secondary" %>

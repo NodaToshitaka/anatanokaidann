@@ -1,1 +1,1 @@
-$("#comments_error").html("<%= j(render 'layouts/errors', obj: @comment) %>");
+$("#comments_error").html("<%= j(render 'devise/shared/error_messages', resource: @comment) %>");

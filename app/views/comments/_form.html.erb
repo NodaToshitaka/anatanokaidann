@@ -1,5 +1,6 @@
 <%= form_with model:[story, comment], url: story_comments_path(story) do |f| %>
 
+
   <div class="form-group">
     <%= f.text_area :body, class: 'form-control', rows: 5, :placeholder => "200字以内" %>
   </div>
