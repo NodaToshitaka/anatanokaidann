@@ -7,7 +7,7 @@
     <div class='col-md-8 offset-md-1' >
   		<table class='table'>
   		  <tr>
-          <td id="favorite_buttons_<%= @story.id %>">
+          <td id="favorite_buttons_<%= @story.id %>" style="width: 20%;">
               <%= render 'favorites/favorite', story: @story %>
           </td>
           <td>
@@ -39,7 +39,7 @@
       </table>
       
       <div id="comments_error">
-        <%= render 'layouts/errors', obj: @comment %>
+        <%= render "devise/shared/error_messages", resource: @comment %>
       </div>
       <div>
         <%= render 'comments/form', story: @story, comment: @comment %>

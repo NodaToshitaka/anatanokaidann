@@ -1,4 +1,5 @@
 <%= form_with model:story, local:true do |f| %>
+<%= render "devise/shared/error_messages", resource: story %>
   <div class="form-group">
     <%= f.label :title, "タイトル" %>
     <%= f.text_field :title, class: 'form-control' %>

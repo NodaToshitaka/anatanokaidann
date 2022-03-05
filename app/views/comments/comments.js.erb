@@ -1,3 +1,4 @@
 $("#comments_index").html("<%= j(render 'comments/comments', story: @story, comment: @comment) %>");
+$("#comments_error").html("<%= j(render 'devise/shared/error_messages', resource: @comment) %>");
 
 $("textarea").val('');

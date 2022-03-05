@@ -2,7 +2,6 @@
   <div class='row'>
     <div class="col-md-8 mx-auto" style="padding: 10px 0 10px">
   		<h1>新規投稿</h1>
-    	<%= render 'layouts/errors', obj: @story %>
   		<%= render 'stories/form', story: @story %>
   		<%= link_to '戻る', stories_path, data: { confirm: '編集したデータは失われます、戻りますか？' }, class: "btn btn-secondary" %>
   </div>

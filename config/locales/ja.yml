@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      story: 投稿
+      comment: コメント
+      
+    attributes:
+      story:
+        title: タイトル
+        body: 本文
+        
+      user:
+        email: メールアドレス
+        password: パスワード
+        name: ユーザーネーム
+        introduction: 紹介文
+        
+      comment:
+        body: コメント
+        rate: 評価
+        
+      contact:
+        name: 名前
+        email: メールアドレス
+        phone_number: 電話番号
+        message: メッセージ
+
+
+        
