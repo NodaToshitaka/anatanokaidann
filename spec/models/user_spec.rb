@@ -12,34 +12,50 @@ RSpec.describe User, type: :model do
       it 'nameが存在しなければ保存できない' do
         user = FactoryBot.build(:user, name: nil)
         user.valid?
-        expect(user.errors.full_messages).to include("Name can't be blank")
+        expect(user.errors.full_messages).to include("ユーザーネームを入力してください")
       end
       
       it 'emailが存在しなければ保存できない' do
         user = FactoryBot.build(:user, email: nil)
         user.valid?
-        expect(user.errors.full_messages).to include("Email can't be blank")
+        expect(user.errors.full_messages).to include("メールアドレスを入力してください")
       end
       
       it 'passwordが存在しなければ保存できない' do
         user = FactoryBot.build(:user, password: nil)
         user.valid?
-        expect(user.errors.full_messages).to include("Password can't be blank")
+        expect(user.errors.full_messages).to include("パスワードを入力してください")
+      end
+      
+      it 'passwordが6文字以下だと保存できない' do
+        user = FactoryBot.build(:user, password: "test1" )
+        
+        user.valid?
+        expect(user.errors.full_messages).to include("パスワードは6文字以上で入力してください")
       end
       
       it 'introductionが200字いないでなければ保存できない' do
         user = FactoryBot.build(:user, introduction: Faker::Lorem.characters(number: 201))
         user.valid?
-        expect(user.errors.full_messages).to include("Introduction is too long (maximum is 200 characters)")
+        expect(user.errors.full_messages).to include("紹介文は200文字以内で入力してください")
       end
       
       it 'nameが同じだと保存できない' do
         FactoryBot.build(:user).save
-        user = FactoryBot.build(:user, email: "test2@test2", password: "test2" )
+        user = FactoryBot.build(:user, email: "test2@test2", password: "test222" )
         
         user.valid?
-        expect(user.errors.full_messages).to include("Name has already been taken")
+        expect(user.errors.full_messages).to include( "ユーザーネームはすでに存在します")
       end
+      
+      it 'emailが同じだと保存できない' do
+        FactoryBot.build(:user).save
+        user = FactoryBot.build(:user, name: "testuser2", password: "test222" )
+        
+        user.valid?
+        expect(user.errors.full_messages).to include("メールアドレスはすでに存在します")
+      end
+      
     end
   end
 end
