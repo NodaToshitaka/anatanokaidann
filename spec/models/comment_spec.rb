@@ -16,7 +16,7 @@ RSpec.describe Comment, type: :model do
         story = FactoryBot.build(:story, user: user)
         comment = FactoryBot.build(:comment, user: user, story: story, body: nil)
         comment.valid?
-        expect(comment.errors.full_messages).to include("Body can't be blank")
+        expect(comment.errors.full_messages).to include("コメントを入力してください")
       end
       
       it 'bodyが200字以内でなければ保存できない' do
@@ -24,7 +24,7 @@ RSpec.describe Comment, type: :model do
         story = FactoryBot.build(:story, user: user)
         comment = FactoryBot.build(:comment, user: user, story: story, body: Faker::Lorem.characters(number: 201))
         comment.valid?
-        expect(comment.errors.full_messages).to include("Body is too long (maximum is 200 characters)")
+        expect(comment.errors.full_messages).to include("コメントは200文字以内で入力してください")
       end
       
       it 'rateが存在しなければ保存できない' do
@@ -32,7 +32,7 @@ RSpec.describe Comment, type: :model do
         story = FactoryBot.build(:story, user: user)
         comment = FactoryBot.build(:comment, user: user, story: story, rate: nil)
         comment.valid?
-        expect(comment.errors.full_messages).to include("Rate can't be blank")
+        expect(comment.errors.full_messages).to include("評価は数値で入力してください", "評価を入力してください")
       end
       
     end

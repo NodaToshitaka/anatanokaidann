@@ -14,14 +14,14 @@ RSpec.describe Story, type: :model do
         user = FactoryBot.build(:user)
         story = FactoryBot.build(:story, user: user, body: nil)
         story.valid?
-        expect(story.errors.full_messages).to include("Body can't be blank")
+        expect(story.errors.full_messages).to include("本文を入力してください")
       end
       
       it 'titleが存在しなければ保存できない' do
         user = FactoryBot.build(:user)
         story = FactoryBot.build(:story, user: user, title: nil)
         story.valid?
-        expect(story.errors.full_messages).to include("Title can't be blank")
+        expect(story.errors.full_messages).to include("タイトルを入力してください")
       end
       
       it 'titleが同じであれば保存できない' do
@@ -29,7 +29,7 @@ RSpec.describe Story, type: :model do
         FactoryBot.build(:story, user: user).save
         story = FactoryBot.build(:story, user: user, body: "testbody2")
         story.valid?
-        expect(story.errors.full_messages).to include("Title has already been taken")
+        expect(story.errors.full_messages).to include("タイトルはすでに存在します")
       end
     end
   end

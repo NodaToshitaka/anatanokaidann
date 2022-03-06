@@ -19,6 +19,7 @@ ja:
       comment:
         body: コメント
         rate: 評価
+        story_id: コメント
         
       contact:
         name: 名前
