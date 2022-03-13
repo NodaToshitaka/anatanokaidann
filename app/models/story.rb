@@ -50,10 +50,18 @@ end
 #ソート機能関連
 def self.sort(selection)
   case selection
-  when 'new'
+  when "new"
     return all.order(created_at: :DESC)
-  when 'old'
+  when "old"
     return all.order(created_at: :ASC)
+  when "favorite"
+    return find(Favorite.group(:story_id).order('count(story_id) DESC').pluck(:story_id))
+  when "disfavor"
+    return find(Favorite.group(:story_id).order('count(story_id) ASC').pluck(:story_id))
+  when "many_comments"
+    return find(Comment.group(:story_id).order('count(story_id) DESC').pluck(:story_id))
+  when "few_comments"
+    return find(Comment.group(:story_id).order('count(story_id) ASC').pluck(:story_id))
   end
 end
 
@@ -76,7 +84,7 @@ def total_rate
 end
 
 def self.rank
-  self.left_joins(:comments).group(:id).order("avg(comments.rate) desc")
+  self.left_joins(:comments).group(:id).order("avg(comments.rate) DESC")
 end
 
 
