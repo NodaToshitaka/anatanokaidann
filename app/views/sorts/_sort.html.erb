@@ -1,4 +1,6 @@
-<%= form_with url: sort_path, method: :get do |f| %>
-  <%= f.select :sort, ([["投稿が新しい順","new"],["投稿が古い順","old"]]) %>
-  <%= f.submit "並べ替え" %>
-<% end %>
+<div class="form-inline">
+  <%= form_with url: sort_path, method: :get do |f| %>
+    <%= f.select :sort, ([["投稿が新しい順","new"],["投稿が古い順","old"],["いいねが多い順","favorite"],["いいねが少ない順","disfavor"],["コメントが多い順","many_comments"],["コメントが少ない順","few_comments"]]), {}, class: "btn btn-primary form-control form-group" %>
+    <%= f.submit "並べ替え", class: "btn btn-success form-control form-group" %>
+  <% end %>
+</div>
